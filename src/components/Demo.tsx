@@ -1,6 +1,6 @@
 import React from 'react';
 import { Play, Calendar, Bell, Sparkles } from 'lucide-react';
-import AudioWithWaveform from './VOCDemo.tsx';
+import InteractiveAudioPlayer from './VOCDemo.tsx';
 
 const Demo = () => {
   return (
@@ -30,7 +30,7 @@ const Demo = () => {
                 <span className="font-semibold">See our agents quickly getting a VOC for a patient</span>
               </div>
               <div className="flex items-center justify-center">
-                <AudioWithWaveform/>
+                <InteractiveAudioPlayer audioFile='/public/voc_agent_demo.wav'/>
               </div>
             </div>
               </div>
