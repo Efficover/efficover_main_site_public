@@ -1,5 +1,6 @@
 import React from 'react';
 import { Play, Calendar, Bell, Sparkles } from 'lucide-react';
+import AudioWithWaveform from './VOCDemo.tsx';
 
 const Demo = () => {
   return (
@@ -18,21 +19,20 @@ const Demo = () => {
           <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 mb-8">
             <div className="relative">
               <div className="bg-gray-100 rounded-xl p-16 mb-8 flex items-center justify-center">
-                <div className="text-center">
-                  <div className="bg-blue-100 rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center">
-                    <Play className="h-12 w-12 text-blue-600" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                    Demo Coming Soon
-                  </h3>
-                  <p className="text-gray-600 text-lg mb-6">
-                    Stay tuned for live walkthroughs showing how we automate routine work while empowering your staff
-                  </p>
-                  <div className="flex items-center justify-center space-x-2 text-blue-600">
-                    <Sparkles className="h-5 w-5" />
-                    <span className="font-semibold">Interactive Demo in Development</span>
-                  </div>
-                </div>
+              <div className="text-center">
+              <div className="bg-blue-100 rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center">
+              </div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                Automated VOC Demo
+              </h3>
+              <div className="flex items-center justify-center space-x-2 text-blue-600 mb-4">
+                <Sparkles className="h-5 w-5" />
+                <span className="font-semibold">See our agents quickly getting a VOC for a patient</span>
+              </div>
+              <div className="flex items-center justify-center">
+                <AudioWithWaveform/>
+              </div>
+            </div>
               </div>
             </div>
           </div>
