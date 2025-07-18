@@ -191,14 +191,14 @@ const InteractiveAudioPlayer: React.FC<Props> = ({ audioFile, transcriptFile }) 
       </div>
 
       {/* Current Transcript */}
-      <div className="p-4 bg-gray-50 rounded-lg min-h-[4rem]">
+      {/* <div className="p-4 bg-gray-50 rounded-lg min-h-[4rem]">
         <p className="text-sm text-gray-700 italic">
-          {getCurrentTranscriptText() || 'Play audio to see transcript...'}
+          {getCurrentTranscriptText()}
         </p>
-      </div>
+      </div> */}
 
       {/* Full Transcript (sentences) */}
-      <div className="mt-4 p-4 bg-gray-50 rounded-lg max-h-40 overflow-y-auto text-sm text-gray-700">
+      {/* <div className="mt-4 p-4 bg-gray-50 rounded-lg max-h-40 overflow-y-auto text-sm text-gray-700">
         {transcript.map((item, i) => (
           <p
             key={i}
@@ -212,7 +212,7 @@ const InteractiveAudioPlayer: React.FC<Props> = ({ audioFile, transcriptFile }) 
             [{formatTime(item.start)}] {item.text}
           </p>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
