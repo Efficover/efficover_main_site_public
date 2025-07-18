@@ -30,7 +30,7 @@ const Demo = () => {
                 <span className="font-semibold">See our agents quickly getting a VOC for a patient</span>
               </div>
               <div className="flex items-center justify-center">
-                <InteractiveAudioPlayer audioFile='/voc_agent_demo.wav'/>
+                <InteractiveAudioPlayer audioFile='/voc_agent_demo.wav' transcriptFile='/voc_agent_demo_transcript.TextGrid'/>
               </div>
             </div>
               </div>
