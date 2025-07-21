@@ -1,0 +1,77 @@
+[
+  {
+    "start": 1.68,
+    "end": 20.44,
+    "text": "Efficover: Hi. This is Lola from Efficover. I'm calling to verify coverage for patient Michael Chen, subscriber ID a 1 2 3 4 5. They are scheduled for adult prophylaxis. Amalgam filling. d codes d 1 1 10. D 2 1 4 0. Could you tell me about their dental benefits?"
+  },
+  {
+    "start": 20.44,
+    "end": 22.39,
+    "text": "Insurance: Yeah. Sure."
+  },
+  {
+    "start": 22.39,
+    "end": 31.29,
+    "text": "Efficover: Great. To start, could you please provide me with the individual and family deductible"
+  },
+  {
+    "start": 31.29,
+    "end": 35.27,
+    "text": "Insurance: Individual 50 and the family is 150."
+  },
+  {
+    "start": 35.27,
+    "end": 42.51,
+    "text": "Efficover: Thank you. And how much of the individual and family deductible has been met so far?"
+  },
+  {
+    "start": 42.51,
+    "end": 50.78,
+    "text": "Insurance: The individual has been met. The family has spent about a hundred"
+  },
+  {
+    "start": 50.78,
+    "end": 66.26,
+    "text": "Efficover: Got it. So the individual deductible has been fully matched, and the family deductible has about 100 dollars spent. Next, could you tell me the annual maximum? And how much has been used this year?"
+  },
+  {
+    "start": 66.26,
+    "end": 72.2,
+    "text": "Insurance: Annual maximum 2000, and the patient has used 500."
+  },
+  {
+    "start": 72.2,
+    "end": 87.4,
+    "text": "Efficover: You for that information. So the annual maximum is 2000 dollars. And the patient has used 500 dollars this year. Now could you provide the coverage details for D110 prophylaxis and D2140 amalgam filling?"
+  },
+  {
+    "start": 87.4,
+    "end": 92.51,
+    "text": "Insurance: That's covered at about 80 percent, and the second one's covered a hundred percent."
+  },
+  {
+    "start": 92.51,
+    "end": 108.5,
+    "text": "Efficover: Thank you for confirming that. So d 11 10 prophylaxis is covered at 80 percent. And d 2 1 4 0, amalgam filling, is covered at 100 percent. Are there any waiting periods for major services like crowns, bridges, or dentures?"
+  },
+  {
+    "start": 108.5,
+    "end": 111.09,
+    "text": "Insurance: There's a 6 month waiting period."
+  },
+  {
+    "start": 111.09,
+    "end": 123.85,
+    "text": "Efficover: Thank you for that information. So there is a 6 month waiting period. For major services like crowns, bridges, or dentures. Lastly, could you please confirm the eligibility status for this patient?"
+  },
+  {
+    "start": 123.85,
+    "end": 126.56,
+    "text": "Insurance: Yeah. They're eligible. They're verified."
+  },
+  {
+    "start": 126.56,
+    "end": 133.0,
+    "text": "Efficover: Great. So the patient is eligible and verified. Thank you for providing all the necessary information. Thank you for your time. Goodbye."
+  }
+] 

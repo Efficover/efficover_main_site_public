@@ -1,0 +1,137 @@
+[
+  {
+    "start": 0.8,
+    "end": 8.52,
+    "text": "AI: Hi, this is Lola from Efficover. I'm calling to verify coverage for patient Michael Chen, subscriber ID A12345."
+  },
+  {
+    "start": 9.28,
+    "end": 14.49,
+    "text": "User: They are scheduled for adult prophylaxis and amalgam filling, codes D1110 and D2140."
+  },
+  {
+    "start": 15.04,
+    "end": 16.1,
+    "text": "AI: D2140."
+  },
+  {
+    "start": 16.66,
+    "end": 18.52,
+    "text": "User: Could you tell me about their dental benefits?"
+  },
+  {
+    "start": 19.64,
+    "end": 20.21,
+    "text": "AI: Yeah, sure."
+  },
+  {
+    "start": 21.32,
+    "end": 28.49,
+    "text": "User: Great. To start, could you please provide me with the individual and family deductible?"
+  },
+  {
+    "start": 29.87,
+    "end": 33.07,
+    "text": "AI: Individual is $50 and the family is $150."
+  },
+  {
+    "start": 33.84,
+    "end": 33.92,
+    "text": "User: Thank you."
+  },
+  {
+    "start": 34.49,
+    "end": 40.23,
+    "text": "AI: And how much of the individual and family deductible has been met so far?"
+  },
+  {
+    "start": 41.49,
+    "end": 46.24,
+    "text": "User: The individual has been met. The family has spent about $100."
+  },
+  {
+    "start": 48.81,
+    "end": 48.9,
+    "text": "AI: Got it."
+  },
+  {
+    "start": 49.85,
+    "end": 51.51,
+    "text": "User: So the individual deductible"
+  },
+  {
+    "start": 52.03,
+    "end": 57.12,
+    "text": "AI: has been fully met and the family deductible has about $100 spent."
+  },
+  {
+    "start": 58.63,
+    "end": 63.88,
+    "text": "User: Next, could you tell me the annual maximum and how much has been used this year?"
+  },
+  {
+    "start": 65.45,
+    "end": 69.78,
+    "text": "AI: Annual maximum is $2,000 and the patient has used $500."
+  },
+  {
+    "start": 71.03,
+    "end": 72.02,
+    "text": "User: Thank you for that information."
+  },
+  {
+    "start": 72.62,
+    "end": 84.79,
+    "text": "AI: So the annual maximum is $2,000 and the patient has used $500 this year. Now could you provide the coverage details for D1110 prophylaxis and D2140 amalgam filling?"
+  },
+  {
+    "start": 86.28,
+    "end": 90.55,
+    "text": "User: That's covered at about 80% and the second one's covered at 100%."
+  },
+  {
+    "start": 91.11,
+    "end": 91.19,
+    "text": "AI: Thank you."
+  },
+  {
+    "start": 91.71,
+    "end": 92.62,
+    "text": "User: Thank you for confirming that."
+  },
+  {
+    "start": 93.59,
+    "end": 106.07,
+    "text": "AI: So D1110 prophylaxis is covered at 80% and D2140 amalgam filling is covered at 100%. Are there any waiting periods for major services like crowns, bridges, or dentures?"
+  },
+  {
+    "start": 107.61,
+    "end": 109.4,
+    "text": "User: There's a 6-month waiting period."
+  },
+  {
+    "start": 110.31,
+    "end": 117.19,
+    "text": "AI: Thank you for that information. So there is a 6-month waiting period for major services like crowns, bridges, or dentures."
+  },
+  {
+    "start": 117.96,
+    "end": 121.73,
+    "text": "User: Lastly, could you please confirm the"
+  },
+  {
+    "start": 123.01,
+    "end": 124.53,
+    "text": "AI: eligibility"
+  },
+  {
+    "start": 125.73,
+    "end": 130.76,
+    "text": "User: status for this patient?"
+  },
+  {
+    "start": 131.71,
+    "end": 134.76,
+    "text": "AI: They're verified and eligible."
+  }
+] 
