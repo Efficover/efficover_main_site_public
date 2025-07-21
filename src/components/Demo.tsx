@@ -1,38 +1,33 @@
 import React from 'react';
-import { Play, Calendar, Bell, Sparkles } from 'lucide-react';
-import InteractiveAudioPlayer from './VOCDemo.tsx';
+import { Calendar, Bell, Sparkles } from 'lucide-react';
+import VOCVisualizer from './VOCDemoVisualizer.tsx';
 
 const Demo = () => {
   return (
     <section id="demo" className="py-20 bg-gradient-to-br from-gray-50 to-blue-50">
       <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <div className="mb-12">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-12 text-center">
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
               See Efficover in Action
             </h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
               See how Efficover automates routine tasks and provides intelligent tools for complex case management
             </p>
           </div>
 
+          {/* Demo Content */}
           <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12 mb-8">
             <div className="relative">
-              <div className="bg-gray-100 rounded-xl p-16 mb-8 flex items-center justify-center">
               <div className="text-center">
-              <div className="bg-blue-100 rounded-full p-6 w-24 h-24 mx-auto mb-6 flex items-center justify-center">
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                Automated VOC Demo
-              </h3>
-              <div className="flex items-center justify-center space-x-2 text-blue-600 mb-4">
-                <Sparkles className="h-5 w-5" />
-                <span className="font-semibold">See our agents quickly getting a VOC for a patient</span>
-              </div>
-              <div className="flex items-center justify-center">
-                <InteractiveAudioPlayer audioFile='/voc_agent_demo.wav' transcriptFile='/voc_agent_demo_transcript.TextGrid'/>
-              </div>
-            </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4">
+                  VOC Status Visualizer
+                </h3>
+                <div className="flex items-center justify-center space-x-2 text-green-600 mb-4">
+                  <Sparkles className="h-5 w-5" />
+                  <span className="font-semibold">Live patient electronic record updates with VOC status tracking</span>
+                </div>
+                <VOCVisualizer />
               </div>
             </div>
           </div>
