@@ -8,6 +8,13 @@
   to = "/#contact"
   status = 301
 
+# Handle form submissions
+[[redirects]]
+  from = "/"
+  to = "/"
+  status = 200
+  conditions = {Query = "success=true"}
+
 # Headers for security and caching
 [[headers]]
   for = "/*"

@@ -24,30 +24,13 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    // Netlify Forms will handle the submission automatically
-    console.log('Form submitted:', formData);
-    setIsSubmitted(true);
-    
-    // Reset form after 5 seconds
-    setTimeout(() => {
-      setIsSubmitted(false);
-      setFormData({
-        name: '',
-        email: '',
-        practice: '',
-        phone: '',
-        message: '',
-        requestType: 'demo',
-        practiceSize: '',
-        currentPMS: '',
-        preferredContact: 'email',
-        timeline: '',
-        budget: ''
-      });
-    }, 5000);
-  };
+  // Check if we're on the success page (Netlify redirects here after form submission)
+  React.useEffect(() => {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+      setIsSubmitted(true);
+    }
+  }, []);
 
   return (
     <section id="contact" className="py-20 bg-white">
@@ -115,7 +98,7 @@ const Contact = () => {
                 method="POST" 
                 data-netlify="true" 
                 netlify-honeypot="bot-field"
-                onSubmit={handleSubmit} 
+                action="/success.html"
                 className="space-y-6"
               >
                 {/* Netlify Forms hidden fields */}
@@ -362,6 +345,27 @@ const Contact = () => {
                     ? "We've received your Letter of Intent and will contact you within 24 hours to discuss next steps."
                     : "We've received your request and will get back to you within 24 hours."}
                 </p>
+                <button
+                  onClick={() => {
+                    setIsSubmitted(false);
+                    setFormData({
+                      name: '',
+                      email: '',
+                      practice: '',
+                      phone: '',
+                      message: '',
+                      requestType: 'demo',
+                      practiceSize: '',
+                      currentPMS: '',
+                      preferredContact: 'email',
+                      timeline: '',
+                      budget: ''
+                    });
+                  }}
+                  className="mt-4 text-blue-600 hover:text-blue-700 font-medium"
+                >
+                  Send another message
+                </button>
               </div>
             )}
           </div>
