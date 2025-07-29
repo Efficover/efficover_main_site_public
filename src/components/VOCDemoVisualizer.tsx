@@ -25,42 +25,46 @@ const VOCVisualizer: React.FC = () => {
     day: 'numeric' 
   });
 
-  // Clinical staff view data that updates as VOC progresses
+  // Clinical staff view data - fully populated initially, then resets when demo starts
   const [clinicalData, setClinicalData] = useState({
     patient: {
       name: 'Michael Chen',
       policy: 'A12345',
       insurance: 'Delta Dental',
-      status: 'Pending VOC'
+      status: 'VOC Complete'
     },
     procedures: [
       {
         code: 'D1110',
         description: 'Adult Prophylaxis',
-        status: 'pending',
-        coverage: 'Pending',
-        patientCost: 'Pending',
-        insurancePays: 'Pending',
+        status: 'approved',
+        coverage: '80%',
+        patientCost: '$24',
+        insurancePays: '$96',
         fee: '$120'
       },
       {
         code: 'D2140',
         description: 'Amalgam Filling',
-        status: 'pending',
-        coverage: 'Pending',
-        patientCost: 'Pending',
-        insurancePays: 'Pending',
+        status: 'approved',
+        coverage: '100%',
+        patientCost: '$0',
+        insurancePays: '$180',
         fee: '$180'
       }
     ],
     coverage: {
-      individualDeductible: { amount: 50, met: false, status: 'pending' },
-      familyDeductible: { amount: 150, spent: 0, status: 'pending' },
-      annualMaximum: { limit: 2000, used: 0, status: 'pending' },
-      waitingPeriods: { status: 'pending', description: 'Pending' },
-      eligibility: { status: 'pending' }
+      individualDeductible: { amount: 50, met: true, status: 'verified' },
+      familyDeductible: { amount: 150, spent: 100, status: 'verified' },
+      annualMaximum: { limit: 2000, used: 500, status: 'verified' },
+      waitingPeriods: { status: 'verified', description: '6 months for major services' },
+      eligibility: { status: 'verified' }
     }
   });
+
+  // Track if demo has started to show the building process
+  const [demoStarted, setDemoStarted] = useState(false);
+  const [showDownloadModal, setShowDownloadModal] = useState(false);
 
   // Load transcript data from public folder
   useEffect(() => {
@@ -212,6 +216,47 @@ const VOCVisualizer: React.FC = () => {
 
   const togglePlay = () => {
     if (!wavesurferRef.current) return;
+    
+    if (!demoStarted) {
+      // First time starting - reset data to show building process
+      setDemoStarted(true);
+      setClinicalData({
+        patient: {
+          name: 'Michael Chen',
+          policy: 'A12345',
+          insurance: 'Delta Dental',
+          status: 'Pending VOC'
+        },
+        procedures: [
+          {
+            code: 'D1110',
+            description: 'Adult Prophylaxis',
+            status: 'pending',
+            coverage: 'Pending',
+            patientCost: 'Pending',
+            insurancePays: 'Pending',
+            fee: '$120'
+          },
+          {
+            code: 'D2140',
+            description: 'Amalgam Filling',
+            status: 'pending',
+            coverage: 'Pending',
+            patientCost: 'Pending',
+            insurancePays: 'Pending',
+            fee: '$180'
+          }
+        ],
+        coverage: {
+          individualDeductible: { amount: 50, met: false, status: 'pending' },
+          familyDeductible: { amount: 150, spent: 0, status: 'pending' },
+          annualMaximum: { limit: 2000, used: 0, status: 'pending' },
+          waitingPeriods: { status: 'pending', description: 'Pending' },
+          eligibility: { status: 'pending' }
+        }
+      });
+    }
+    
     if (isPlaying) {
       wavesurferRef.current.pause();
     } else {
@@ -271,7 +316,7 @@ const VOCVisualizer: React.FC = () => {
             className="flex items-center justify-center gap-2 px-3 py-1.5 bg-gradient-to-r from-blue-600 to-cyan-600 text-white rounded-lg hover:from-blue-700 hover:to-cyan-700 transition-all duration-200 font-semibold text-sm"
           >
             {isPlaying ? <Pause className="w-3 h-3" /> : <Play className="w-3 h-3" />}
-            {isPlaying ? 'Pause' : 'Start Demo'}
+            {isPlaying ? 'Pause' : (demoStarted ? 'Restart Demo' : 'Start Demo')}
           </button>
         </div>
       </div>
@@ -289,15 +334,18 @@ const VOCVisualizer: React.FC = () => {
               <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse mt-1"></div>
               <div className="flex-1">
                 <p className="text-sm text-gray-800 font-medium leading-relaxed">
-                  {currentTranscript || 'Click play to start the VOC demo...'}
+                  {!demoStarted ? 'Click Start Demo to see the VOC demo in action...' : 
+                   currentTranscript || 'Starting VOC verification...'}
                 </p>
                 <div className="flex items-center gap-2 mt-2">
                   <span className="text-xs text-gray-500">
                     {formatTime(currentTime)}
                   </span>
-                  <span className="text-xs text-blue-600 font-medium">
-                    {currentSpeaker} speaking...
-                  </span>
+                  {demoStarted && (
+                    <span className="text-xs text-blue-600 font-medium">
+                      {currentSpeaker} speaking...
+                    </span>
+                  )}
                 </div>
               </div>
             </div>
@@ -425,7 +473,10 @@ const VOCVisualizer: React.FC = () => {
                 <span className="text-xs font-semibold text-gray-800">VOC Recording & Transcript</span>
                 <span className="text-xs text-gray-600">Last Verified: {today}</span>
               </div>
-              <button className="w-full flex items-center justify-center gap-2 px-2 py-1.5 bg-blue-600 text-white rounded text-xs font-medium hover:bg-blue-700 transition-colors">
+              <button 
+                onClick={() => setShowDownloadModal(true)}
+                className="w-full flex items-center justify-center gap-2 px-2 py-1.5 bg-blue-600 text-white rounded text-xs font-medium hover:bg-blue-700 transition-colors"
+              >
                 <Download className="w-3 h-3" />
                 Download VOC Recording & Transcript
               </button>
@@ -433,6 +484,84 @@ const VOCVisualizer: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Download Modal */}
+      {showDownloadModal && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white rounded-lg p-6 max-w-md mx-4 shadow-xl">
+            <div className="text-center">
+              <div className="bg-green-100 rounded-full p-3 w-12 h-12 mx-auto mb-4 flex items-center justify-center">
+                <Download className="h-6 w-6 text-green-600" />
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                Demo Download
+              </h3>
+              <p className="text-gray-600 mb-4 text-sm">
+                In a real implementation, this would download:
+              </p>
+              <ul className="text-left text-sm text-gray-600 mb-6 space-y-2">
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  VOC audio recording (.wav)
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  Complete transcript (.txt)
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  Verification summary (.pdf)
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
+                  Coverage details (.json)
+                </li>
+              </ul>
+              <div className="flex gap-3">
+                <button
+                  onClick={() => setShowDownloadModal(false)}
+                  className="flex-1 bg-gray-200 text-gray-800 px-4 py-2 rounded-lg hover:bg-gray-300 transition-colors text-sm font-medium"
+                >
+                  Close
+                </button>
+                <button
+                  onClick={() => {
+                    setShowDownloadModal(false);
+                    // Simulate download by creating a demo file
+                    const demoContent = `VOC Demo - Michael Chen (A12345)
+Date: ${today}
+Duration: ${formatTime(duration)}
+
+Coverage Summary:
+- Individual Deductible: $50 (Met)
+- Annual Maximum: $2000 ($500 used)
+- Waiting Periods: 6 months for major services
+
+Procedures:
+- D1110 (Adult Prophylaxis): 80% coverage, Patient cost: $24
+- D2140 (Amalgam Filling): 100% coverage, Patient cost: $0
+
+Status: VERIFIED`;
+                    
+                    const blob = new Blob([demoContent], { type: 'text/plain' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = `VOC_Demo_${today.replace(/\//g, '-')}.txt`;
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                  }}
+                  className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors text-sm font-medium"
+                >
+                  Download Demo
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
