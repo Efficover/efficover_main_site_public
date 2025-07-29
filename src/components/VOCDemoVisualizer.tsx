@@ -292,7 +292,7 @@ const VOCVisualizer: React.FC = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto h-screen flex flex-col">
+    <div className="max-w-7xl mx-auto flex flex-col">
       {/* Header - Audio Player */}
       <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg p-3 border border-blue-100 mb-3">
         <div className="flex items-center justify-between mb-2">
@@ -322,14 +322,14 @@ const VOCVisualizer: React.FC = () => {
       </div>
 
       {/* Main Content - 2 Columns in same row */}
-      <div className="flex-1 grid grid-cols-1 lg:grid-cols-2 gap-4 min-h-0">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Left Column - VOC Audio & Transcript */}
-        <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm flex flex-col">
+        <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
           <h3 className="text-base font-semibold text-gray-800 mb-3 flex items-center gap-2">
             <Volume2 className="w-4 h-4 text-blue-600" />
             Live VOC Call
           </h3>
-          <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-lg p-3 border border-blue-100 flex-1 flex flex-col">
+          <div className="bg-gradient-to-r from-blue-50 to-cyan-cyan-50 rounded-lg p-3 border border-blue-100">
             <div className="flex items-start gap-2 flex-1">
               <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse mt-1"></div>
               <div className="flex-1">
@@ -353,13 +353,13 @@ const VOCVisualizer: React.FC = () => {
         </div>
 
         {/* Right Column - Clinical Staff View */}
-        <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm flex flex-col">
+        <div className="bg-white rounded-lg p-4 border border-gray-200 shadow-sm">
           <h3 className="text-base font-semibold text-gray-800 mb-3 flex items-center gap-2">
             <Building2 className="w-4 h-4 text-blue-600" />
             Clinical Staff View
           </h3>
           
-          <div className="flex-1 space-y-2 overflow-y-auto">
+          <div className="space-y-2">
             {/* Patient Info - Brief */}
             <div className="bg-gray-50 rounded-lg p-2 border border-gray-200">
               <h4 className="text-xs font-semibold text-gray-800 mb-1 flex items-center gap-1">
